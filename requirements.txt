@@ -1,0 +1,17 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+--find-links https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
+
+runpod~=1.7.0
+
+hf_transfer
+torch==2.4.0
+torchvision==0.19.0
+pillow==10.4.0
+imageio==2.36.1
+imageio-ffmpeg==0.5.1
+transformers==4.46.3
+diffusers
+accelerate
+torchvision
+Pillow
+numpy
