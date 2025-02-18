@@ -22,11 +22,11 @@ RUN pip install --upgrade pip && \
 
 #RUN rm -rf /var/lib/apt/lists/*
 
-COPY rp_warmup_sdxl_light_sdctrl.py ./
-RUN python3 rp_warmup_sdxl_light_sdctrl.py
+COPY init ./
+RUN ./init
 
-COPY *.py ./
-COPY *.json ./
-COPY *.png ./
+WORKDIR /app/source
 
-CMD [ "python3", "-u", "rp_handler_sdxl_light_sdctrl.py" ]
+RUN ./init
+
+CMD [ "/bin/bash", "run" ]
