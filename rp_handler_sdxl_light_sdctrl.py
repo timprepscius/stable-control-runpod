@@ -54,6 +54,13 @@ controlnet_pipe = StableDiffusionXLControlNetImg2ImgPipeline.from_pretrained(
 
 print(f"SETUP ---- D {datetime.now()}");
 
+def b64of(fileName):
+    with open(out_file, "rb") as f:
+       out_data = f.read()
+
+    return base64.b64encode(out_data).decode("utf-8")
+
+
 def preprocess_image(image_path):
     image = Image.open(image_path).convert("RGB")
     image = image.resize((1024, 1024))
@@ -96,7 +103,7 @@ def process(job):
     output_paths = []
     for i, sample in enumerate(generated_images):
         output_name = f"{job_id}-generated-{i}"
-        output_path = f"/tmp/{output_name}.png"
+        output_path = f"/tmp/{output_name}.jpg"
         sample.save(output_path)
         output_paths.append(output_path)
 
@@ -117,7 +124,7 @@ def process(job):
 
     for i, sample in enumerate(posed_images):
         output_name = f"{job_id}-posed-{i}"
-        output_path = f"/tmp/{output_name}.png"
+        output_path = f"/tmp/{output_name}.jpg"
         sample.save(output_path)
         output_paths.append(output_path)
 
@@ -131,12 +138,13 @@ def run(job):
     job_output = []
 
     for index, img_path in enumerate(result):
-        image_url = rp_upload.upload_image(job['id'], img_path, index)
+        data = b64of(img_path)
+        # image_url = rp_upload.upload_image(job['id'], img_path, index)
 
         job_output.append({
-            "image": image_url,
+            "image": data,
             "path": img_path,
-            "seed": validated_input['seed'] + index
+            "parameters": validated_input
         })
 
     # Remove downloaded input objects
