@@ -110,6 +110,8 @@ def process(job):
     posed_images = []
     for generated_image in generated_images:
         results = controlnet_pipe(
+            prompt=prompt,
+            negative_prompt=negative_prompt,
             image=generated_image,    # The original generated image
             control_image=pose_image, # The extracted pose
             strength=0.8,             # Controls how much the original image is altered
