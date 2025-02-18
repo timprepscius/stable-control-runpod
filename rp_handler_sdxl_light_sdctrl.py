@@ -147,6 +147,7 @@ def run(job):
             "parameters": job["input"]
         })
 
+
     # Remove downloaded input objects
     rp_cleanup.clean(['input_objects'])
 
