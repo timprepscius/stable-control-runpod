@@ -6,7 +6,6 @@ WORKDIR /app
 
 COPY requirements.txt ./
 
-# Install system dependencies
 RUN apt-get update
 RUN apt-get install -y \
     git \
@@ -29,4 +28,4 @@ WORKDIR /app/source
 
 RUN ./init
 
-CMD [ "/bin/bash", "run" ]
+CMD [ "/bin/bash", "start" ]
