@@ -20,14 +20,13 @@ RUN pip install --upgrade pip && \
 
 #RUN rm -rf /var/lib/apt/lists/*
 
-COPY init ./
-RUN ./init
-
-WORKDIR /app/source
-
 COPY requirements-torch-adapter.txt ./
 RUN pip install --verbose -r requirements-torch-adapter.txt
 
-RUN ./init
+COPY init ./
+RUN ./init 0220740
+
+WORKDIR /app/source
+RUN ./init 0220740
 
 CMD [ "/bin/bash", "start" ]
