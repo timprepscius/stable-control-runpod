@@ -3,7 +3,8 @@
 
 runpod~=1.7.0
 
-hf_transfer
+hf_transfer==0.1.9
+huggingface_hub==0.25.2
 torch==2.4.0
 torchvision==0.19.0
 pillow==10.4.0

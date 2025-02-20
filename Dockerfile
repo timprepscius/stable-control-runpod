@@ -4,8 +4,6 @@ FROM nvidia/cuda:12.0.1-cudnn8-runtime-ubuntu22.04
 # Set working directory
 WORKDIR /app
 
-COPY requirements.txt ./
-
 RUN apt-get update
 RUN apt-get install -y \
     git \
@@ -16,6 +14,7 @@ RUN uname -m
 RUN python3 --version
 
 # Install Python dependencies
+COPY requirements.txt ./
 RUN pip install --upgrade pip && \
     pip install --verbose -r requirements.txt
 
@@ -25,6 +24,9 @@ COPY init ./
 RUN ./init
 
 WORKDIR /app/source
+
+COPY requirements-torch-adapter.txt ./
+RUN pip install --verbose -r requirements-torch-adapter.txt
 
 RUN ./init
 

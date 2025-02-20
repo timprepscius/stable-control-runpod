@@ -1,0 +1,5 @@
+git+https://github.com/huggingface/diffusers.git@t2iadapterxl
+controlnet_aux==0.0.7
+transformers
+accelerate
+safetensors
