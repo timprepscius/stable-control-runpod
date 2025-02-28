@@ -20,9 +20,9 @@ RUN pip install --upgrade pip && \
 
 #RUN rm -rf /var/lib/apt/lists/*
 
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y \
-        python3-opencv
+#RUN DEBIAN_FRONTEND=noninteractive \
+#    apt-get install -y \
+#        python3-opencv
         
 COPY requirements-torch-adapter.txt ./
 RUN pip install --verbose -r requirements-torch-adapter.txt

@@ -10,11 +10,15 @@ torchvision==0.19.0
 pillow==10.4.0
 imageio==2.36.1
 imageio-ffmpeg==0.5.1
-transformers==4.49.0
+#transformers==4.49.0
+transformers
 diffusers==0.32.2
 accelerate
 torchvision
 Pillow
 numpy
 bitsandbytes
+
 opencv-python
+sentencepiece
+protobuf
