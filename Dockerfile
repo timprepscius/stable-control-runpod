@@ -20,13 +20,17 @@ RUN pip install --upgrade pip && \
 
 #RUN rm -rf /var/lib/apt/lists/*
 
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y \
+        python3-opencv
+        
 COPY requirements-torch-adapter.txt ./
 RUN pip install --verbose -r requirements-torch-adapter.txt
 
 COPY init ./
-RUN ./init 0220740
+RUN ./init 02280844
 
 WORKDIR /app/source
-RUN ./init 0220740
+RUN ./init 02280844
 
 CMD [ "/bin/bash", "start" ]
